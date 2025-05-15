@@ -1,3 +1,31 @@
+> Note for this fork:
+
+### Clone and Build
+
+```bash
+    cd <ros2_ws>/src/
+    git clone https://github.com/lacie-life/livox_ros_driver2.git
+    git --recursive clone https://github.com/lacie-life/FAST_LIO_SLAM_Livox.git
+    cd ..
+    colcon build --symlink-install
+    . ./install/setup.bash # use setup.zsh if use zsh
+```
+
+### Run with Livox Mid 360
+
+```bash
+    cd <ros2_ws>
+    . install/setup.bash # use setup.zsh if use zsh
+    ros2 launch fast_lio mapping.launch.py
+    ros2 launch livox_ros_driver2 msg_MID360_launch.py
+
+    # For save map
+    ros2 service call /map_save std_srvs/srv/Trigger
+```
+
+
+
+
 > Maintainer: Yunlong Feng
 
 ## Related Works and Extended Application
