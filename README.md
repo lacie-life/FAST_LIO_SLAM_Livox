@@ -1,3 +1,31 @@
+> Note for this fork:
+
+### Clone and Build
+
+```bash
+    cd <ros2_ws>/src/
+    git clone https://github.com/lacie-life/livox_ros_driver2.git
+    git --recursive clone https://github.com/lacie-life/FAST_LIO_SLAM_Livox.git
+    cd ..
+    colcon build --symlink-install
+    . ./install/setup.bash # use setup.zsh if use zsh
+```
+
+### Run with Livox Mid 360
+
+```bash
+    cd <ros2_ws>
+    . install/setup.bash # use setup.zsh if use zsh
+    ros2 launch fast_lio mapping.launch.py
+    ros2 launch livox_ros_driver2 msg_MID360_launch.py
+
+    # For save map
+    ros2 service call /map_save std_srvs/srv/Trigger
+```
+
+
+
+
 > Maintainer: Yunlong Feng
 
 ## Related Works and Extended Application
@@ -86,8 +114,9 @@ Follow [livox_ros_driver2 Installation](https://github.com/Livox-SDK/livox_ros_d
 Clone the repository and colcon build:
 
 ```bash
-    cd <ros2_ws>
-    git --recursive clone https://github.com/hku-mars/FAST_LIO.git
+    cd <ros2_ws>/src/
+    git clone https://github.com/lacie-life/livox_ros_driver2.git
+    git --recursive clone https://github.com/lacie-life/FAST_LIO_SLAM_Livox.git
     cd ..
     colcon build --symlink-install
     . ./install/setup.bash # use setup.zsh if use zsh
@@ -111,6 +140,9 @@ Connect to your PC to Livox Avia LiDAR by following  [Livox-ros-driver2 installa
     . install/setup.bash # use setup.zsh if use zsh
     ros2 launch fast_lio mapping.launch.py
     ros2 launch livox_ros_driver2 msg_MID360_launch.py
+
+    # For save map
+    ros2 service call /map_save std_srvs/srv/Trigger
 ```
 - For livox serials, FAST-LIO only support the data collected by the ``` livox_lidar_msg.launch ``` since only its ``` livox_ros_driver2/CustomMsg ``` data structure produces the timestamp of each LiDAR point which is very important for the motion undistortion. ``` livox_lidar.launch ``` can not produce it right now.
 - If you want to change the frame rate, please modify the **publish_freq** parameter in the [livox_lidar_msg.launch](https://github.com/Livox-SDK/livox_ros_driver/blob/master/livox_ros_driver2/launch/livox_lidar_msg.launch) of [Livox-ros-driver](https://github.com/Livox-SDK/livox_ros_driver2) before make the livox_ros_driver pakage.
