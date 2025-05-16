@@ -810,9 +810,9 @@ public:
         this->declare_parameter<bool>("common.time_sync_en", false);
         this->declare_parameter<double>("common.time_offset_lidar_to_imu", 0.0);
         this->declare_parameter<double>("filter_size_corner", 0.5);
-        this->declare_parameter<double>("filter_size_surf", 0.5);
-        this->declare_parameter<double>("filter_size_map", 0.5);
-        this->declare_parameter<double>("cube_side_length", 200.);
+        this->declare_parameter<double>("filter_size_surf", 0.05);
+        this->declare_parameter<double>("filter_size_map", 0.05);
+        this->declare_parameter<double>("cube_side_length", 1000.);
         this->declare_parameter<float>("mapping.det_range", 300.);
         this->declare_parameter<double>("mapping.fov_degree", 180.);
         this->declare_parameter<double>("mapping.gyr_cov", 0.1);
@@ -846,8 +846,8 @@ public:
         this->get_parameter_or<bool>("common.time_sync_en", time_sync_en, false);
         this->get_parameter_or<double>("common.time_offset_lidar_to_imu", time_diff_lidar_to_imu, 0.0);
         this->get_parameter_or<double>("filter_size_corner",filter_size_corner_min,0.5);
-        this->get_parameter_or<double>("filter_size_surf",filter_size_surf_min,0.5);
-        this->get_parameter_or<double>("filter_size_map",filter_size_map_min,0.5);
+        this->get_parameter_or<double>("filter_size_surf",filter_size_surf_min,0.1);
+        this->get_parameter_or<double>("filter_size_map",filter_size_map_min,0.1);
         this->get_parameter_or<double>("cube_side_length",cube_len,200.f);
         this->get_parameter_or<float>("mapping.det_range",DET_RANGE,300.f);
         this->get_parameter_or<double>("mapping.fov_degree",fov_deg,180.f);
